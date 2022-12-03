@@ -16,6 +16,12 @@ List<String> findCommonCharacters(str1, str2) {
   return commonCharacters;
 }
 
+String findCommonCharacterOfThree(str1, str2, str3) {
+  var commonCharacters = findCommonCharacters(str1, str2);
+  var badge = findCommonCharacters(commonCharacters, str3);
+  return badge[0];
+}
+
 int findCharacterPriority(character) {
   if (character.codeUnitAt(0) >= 97) {
     return character.codeUnitAt(0) - 96;
@@ -37,35 +43,20 @@ Future<void> puzzle1() async {
       score+= findCharacterPriority(commonChar);
     }
     print('Day3 Puzzle1: sum of item priorities: $score');
-
   } catch (e) {
     print('Error: $e');
   }
-}
-
-String findCommonCharacterOfThree(str1, str2, str3) {
-  var commonCharacters = findCommonCharacters(str1, str2);
-  var badge = findCommonCharacters(commonCharacters, str3);
-  return badge[0];
 }
 
 Future<void> puzzle2() async {
   try {
     int score = 0;
     var lines = await parseInput();
-    List<List<String>> elfGroups = [];
     int groupIndex = 0;
     while (groupIndex < lines.length) {
-      elfGroups.add([
-        lines[groupIndex + 0],
-        lines[groupIndex + 1],
-        lines[groupIndex + 2]
-      ]);
-      groupIndex += 3;
-    }
-    for (var element in elfGroups) {
-      var badge = findCommonCharacterOfThree(element[0], element[1], element[2]);
+      var badge = findCommonCharacterOfThree(lines[groupIndex + 0], lines[groupIndex + 1], lines[groupIndex + 2]);
       score += findCharacterPriority(badge);
+      groupIndex += 3;
     }
     print('Day3 Puzzle2: badge priority: $score');
     return;
