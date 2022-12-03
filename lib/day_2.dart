@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:async';
 
 Future<List<String>> parseInput() async {
-  final file = File('inputs/day_2_puzzle_1.txt');
+  final file = File('inputs/day_2_puzzle.txt');
   return file.readAsLines();
 }
 
