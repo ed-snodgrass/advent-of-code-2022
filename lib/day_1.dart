@@ -21,7 +21,7 @@ List<int> groupElvesByCalories(List<String> input) {
   return elves;
 }
 
-void day1Puzzle1() async {
+void puzzle1() async {
   try {
     var lines = await parseInput();
     var elves = groupElvesByCalories(lines);
@@ -33,7 +33,7 @@ void day1Puzzle1() async {
 }
 
 
-void day1Puzzle2() async {
+void puzzle2() async {
   try {
     var lines = await parseInput();
     var elves = groupElvesByCalories(lines);

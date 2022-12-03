@@ -6,7 +6,7 @@ Future<List<String>> parseInput() async {
   return file.readAsLines();
 }
 
-void day2Puzzle1() async {
+void puzzle1() async {
   try {
     var lines = await parseInput();
     var score = 0;
@@ -47,14 +47,14 @@ void day2Puzzle1() async {
           score += 3;
         }
       }
-      print(score);
     }
+    print(score);
   } catch (e) {
     print('Error: $e');
   }
 }
 
-void day2Puzzle2() async {
+void puzzle2() async {
   try {
     var lines = await parseInput();
     var score = 0;
@@ -95,8 +95,8 @@ void day2Puzzle2() async {
           score += 6;
         }
       }
-      print(score);
     }
+    print(score);
   } catch (e) {
     print('Error: $e');
   }
