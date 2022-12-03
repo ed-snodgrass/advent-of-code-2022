@@ -21,24 +21,24 @@ List<int> groupElvesByCalories(List<String> input) {
   return elves;
 }
 
-void puzzle1() async {
+Future<void> puzzle1() async {
   try {
     var lines = await parseInput();
     var elves = groupElvesByCalories(lines);
     elves.sort((a, b) => b.compareTo(a));
-    print('Elf with the most calories: ${elves[0]}');
+    print('Day1 Puzzle1: Elf with the most calories: ${elves[0]}');
   } catch (e) {
     print('Error: $e');
   }
 }
 
 
-void puzzle2() async {
+Future<void> puzzle2() async {
   try {
     var lines = await parseInput();
     var elves = groupElvesByCalories(lines);
     elves.sort((a, b) => b.compareTo(a));
-    print('Total of top 3 elves: ${elves[0] + elves[1] + elves[2]}');
+    print('Day1 Puzzle2: Total of top 3 elves: ${elves[0] + elves[1] + elves[2]}');
   } catch (e) {
     print('Error: $e');
   }

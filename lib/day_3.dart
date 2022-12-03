@@ -6,41 +6,6 @@ Future<List<String>> parseInput() async {
   return file.readAsLines();
 }
 
-String findCommonCharacter(str1, str2) {
-  for (int i = 0; i < str1.length; i++) {
-    if (str2.contains(str1[i])) {
-      return str1[i];
-    }
-  }
-  return '';
-}
-
-int findCharacterPriority(character) {
-  if (character.codeUnitAt(0) >= 97) {
-    return character.codeUnitAt(0) - 96;
-  } else {
-    return character.codeUnitAt(0) - 64 + 26;
-  }
-}
-
-void puzzle1() async {
-  try {
-    var lines = await parseInput();
-    int score = 0;
-    for (var rucksackItems in lines) {
-      int compartmentSize = (rucksackItems.length / 2).floor();
-      String firstCompartment = rucksackItems.substring(0, compartmentSize);
-      String secondCompartment = rucksackItems.substring(compartmentSize);
-
-      var commonChar = findCommonCharacter(firstCompartment, secondCompartment);
-      score+= findCharacterPriority(commonChar);
-    }
-    print('sum of item priorities: $score');
-  } catch (e) {
-    print('Error: $e');
-  }
-}
-
 List<String> findCommonCharacters(str1, str2) {
   List<String> commonCharacters = [];
   for (int i = 0; i < str1.length; i++) {
@@ -51,13 +16,40 @@ List<String> findCommonCharacters(str1, str2) {
   return commonCharacters;
 }
 
+int findCharacterPriority(character) {
+  if (character.codeUnitAt(0) >= 97) {
+    return character.codeUnitAt(0) - 96;
+  } else {
+    return character.codeUnitAt(0) - 64 + 26;
+  }
+}
+
+Future<void> puzzle1() async {
+  try {
+    var lines = await parseInput();
+    int score = 0;
+    for (var rucksackItems in lines) {
+      int compartmentSize = (rucksackItems.length / 2).floor();
+      String firstCompartment = rucksackItems.substring(0, compartmentSize);
+      String secondCompartment = rucksackItems.substring(compartmentSize);
+
+      var commonChar = findCommonCharacters(firstCompartment, secondCompartment)[0];
+      score+= findCharacterPriority(commonChar);
+    }
+    print('Day3 Puzzle1: sum of item priorities: $score');
+
+  } catch (e) {
+    print('Error: $e');
+  }
+}
+
 String findCommonCharacterOfThree(str1, str2, str3) {
   var commonCharacters = findCommonCharacters(str1, str2);
   var badge = findCommonCharacters(commonCharacters, str3);
   return badge[0];
 }
 
-void puzzle2() async {
+Future<void> puzzle2() async {
   try {
     int score = 0;
     var lines = await parseInput();
@@ -75,7 +67,8 @@ void puzzle2() async {
       var badge = findCommonCharacterOfThree(element[0], element[1], element[2]);
       score += findCharacterPriority(badge);
     }
-    print('badge priority: $score');
+    print('Day3 Puzzle2: badge priority: $score');
+    return;
   } catch (e) {
     print('Error: $e');
   }
