@@ -3,6 +3,7 @@
 // import 'package:advent_of_code_2022/day_3.dart' as day3;
 // import 'package:advent_of_code_2022/day_4.dart' as day4;
 import 'package:advent_of_code_2022/day_5.dart' as day5;
+import 'package:advent_of_code_2022/day_6.dart' as day6;
 
 Future<void> main(List<String> arguments) async {
   // await day1.puzzle1();
@@ -13,6 +14,8 @@ Future<void> main(List<String> arguments) async {
   // await day3.puzzle2();
   // await day4.puzzle1();//507
   // await day4.puzzle2();//897
-  await day5.puzzle1();//FCVRLMVQP
-  await day5.puzzle2();//RWLWGJGFD
+  // await day5.puzzle1();//FCVRLMVQP
+  // await day5.puzzle2();//RWLWGJGFD
+  await day6.puzzle1();//1779
+  await day6.puzzle2();//2635
 }
