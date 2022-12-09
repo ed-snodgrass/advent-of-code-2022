@@ -5,4 +5,7 @@ void main() {
   test('puzzle1', () async {
     expect(await puzzle1(), 1297683);
   });
+  test('puzzle2', () async {
+    expect(await puzzle2(), 5756764);
+  });
 }
